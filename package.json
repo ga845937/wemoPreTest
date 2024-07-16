@@ -1,0 +1,41 @@
+{
+    "name": "wemo-pretest",
+    "private": true,
+    "version": "1.0.0",
+    "description": "wemo pretest",
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint ./",
+        "postgres_build": "ts-node ./build/postgres.ts",
+        "build": "nest build"
+    },
+    "dependencies": {
+        "@nestjs/common": "^10.3.2",
+        "@nestjs/core": "^10.3.2",
+        "@nestjs/platform-express": "^10.3.2",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.1",
+        "pg": "^8.12.0",
+        "pg-hstore": "^2.3.4",
+        "rxjs": "^7.8.1",
+        "sequelize": "^6.37.3",
+        "winston": "^3.13.0",
+        "winston-daily-rotate-file": "^5.0.0"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^10.3.1",
+        "@nestjs/schematics": "^10.1.0",
+        "@nestjs/testing": "^10.3.2",
+        "@types/express": "^4.17.21",
+        "@types/node": "^20.11.16",
+        "@typescript-eslint/eslint-plugin": "^7.16.0",
+        "@typescript-eslint/parser": "^7.16.0",
+        "eslint": "^8.56.0",
+        "eslint-import-resolver-typescript": "^3.6.1",
+        "eslint-plugin-import": "^2.29.1",
+        "sequelize-auto": "^0.8.8",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.4.0"
+    }
+}
