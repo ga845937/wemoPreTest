@@ -34,13 +34,13 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     static initModel(sequelize: Sequelize.Sequelize): typeof User {
         return sequelize.define('User', {
         email: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING(50),
             allowNull: false,
             comment: "使用者email",
             primaryKey: true
         },
         name: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING(50),
             allowNull: false,
             comment: "使用者名稱"
         },

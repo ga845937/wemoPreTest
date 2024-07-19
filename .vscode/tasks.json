@@ -4,6 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "postgres_migration",
+            "type": "npm",
+            "script": "postgres_migration",
+            "problemMatcher": ["$eslint-stylish"]
+        },
+        {
             "label": "postgres_build",
             "type": "npm",
             "script": "postgres_build",

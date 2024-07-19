@@ -44,10 +44,11 @@ export class Rent extends Model<RentAttributes, RentCreationAttributes> implemen
             type: DataTypes.UUID,
             allowNull: false,
             defaultValue: DataTypes.UUIDV4,
+            comment: "租賃資料唯一辨識值",
             primaryKey: true
         },
         userEmail: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING(50),
             allowNull: false,
             comment: "使用者email",
             references: {
@@ -80,14 +81,14 @@ export class Rent extends Model<RentAttributes, RentCreationAttributes> implemen
         createTime: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            defaultValue: Sequelize.Sequelize.literal('floor((EXTRACT(epoch FROM now()) * (1000)'),
+            defaultValue: Sequelize.Sequelize.literal('floor(EXTRACT(epoch FROM now())) * (1000'),
             comment: "租賃資料建立時間",
             field: 'create_time'
         },
         updateTime: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            defaultValue: Sequelize.Sequelize.literal('floor((EXTRACT(epoch FROM now()) * (1000)'),
+            defaultValue: Sequelize.Sequelize.literal('floor(EXTRACT(epoch FROM now())) * (1000'),
             comment: "租賃資料異動時間",
             field: 'update_time'
         }
@@ -96,13 +97,6 @@ export class Rent extends Model<RentAttributes, RentCreationAttributes> implemen
         schema: 'public',
         timestamps: false,
         indexes: [
-            {
-                name: "index_rent_email_during",
-                fields: [
-                    { name: "user_email" },
-                    { name: "during" },
-                ]
-            },
             {
                 name: "rent_pkey",
                 unique: true,

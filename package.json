@@ -6,6 +6,7 @@
     "license": "MIT",
     "scripts": {
         "lint": "eslint ./",
+        "postgres_migration": "ts-node ./migration/postgres/postgres.ts",
         "postgres_build": "ts-node ./build/postgres.ts",
         "build": "nest build"
     },
@@ -30,12 +31,13 @@
         "@types/node": "^20.11.16",
         "@typescript-eslint/eslint-plugin": "^7.16.0",
         "@typescript-eslint/parser": "^7.16.0",
-        "eslint": "^8.56.0",
+        "eslint": "^8.57.0",
         "eslint-import-resolver-typescript": "^3.6.1",
         "eslint-plugin-import": "^2.29.1",
         "sequelize-auto": "^0.8.8",
         "ts-node": "^10.9.2",
         "tsconfig-paths": "^4.2.0",
-        "typescript": "^5.4.0"
+        "typescript": "^5.4.0",
+        "umzug": "^3.8.1"
     }
 }

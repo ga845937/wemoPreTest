@@ -30,7 +30,7 @@
         "emitDecoratorMetadata": true,
         "lib": ["ES2022", "DOM"]
     },
-    "include": ["src/**/*", "build/*"],
+    "include": ["src/**/*", "build/**/*", "migration/**/*"],
     "exclude": ["node_modules"],
     "ts-node": {
         "files": true

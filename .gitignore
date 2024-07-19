@@ -4,3 +4,4 @@ log
 dist
 package-lock.json
 src/env.ts
+src/db/postgres/entity/*.ts

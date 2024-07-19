@@ -12,7 +12,7 @@ import { Injectable, Inject, HttpException, HttpStatus } from "@nestjs/common";
 import { Validator } from "@pipe/validator";
 import { ScooterProvider } from "@provider/scooter";
 import { UserProvider } from "@provider/user";
-import { Op } from "sequelize";
+import { Op, QueryTypes } from "sequelize";
 
 /**
  * TODO: ADD job to check if user is overdue
@@ -34,7 +34,6 @@ export class RentProvider {
 
     private readRentalInfo = async (during: number[], userEmail: string): Promise<RentAttributes> => {
         // ? 已在租車狀態還可以預約下次租車時間?
-        // check if this user is already renting
         const findOption: FindOptions<RentAttributes> = {
             raw: true,
             where: {
@@ -47,18 +46,22 @@ export class RentProvider {
         const rentalInfo = await this.wemoDB.Rent.findOne(findOption);
 
         //// raw SQL version
-        // const rawSQL = "SELECT * FROM rent WHERE user_email = :userEmail AND during && int8range(:realDuring) limit 1;";
+        // const rawSQL = "SELECT * FROM rent WHERE user_email = :userEmail AND during && int8range(:during) limit 1;";
         // const [rentalInfo] = await this.wemoDB.Rent.sequelize.query(rawSQL, {
         //     raw: true,
-        //     replacements: { userEmail: body.userEmail, realDuring },
+        //     replacements: { userEmail, during },
         //     type: QueryTypes.SELECT,
         // });
-        // console.log(rentalInfo);
         return rentalInfo;
     };
 
     public createRent = async (body: CreateRentRequest): Promise<void> => {
-        // TODO: redis lock for High Concurrency, lock by scooterLicensePlate and
+        /**
+         * TODO: For High Concurrency
+         * 1. redis lock
+         * 2. CQRS
+         * 3. Message Queue (NATS, Kafka, rabbitMQ ...)
+         */
 
         const readScooterData: ScooterFindByPKAttributes = {
             licensePlate: body.scooterLicensePlate,
